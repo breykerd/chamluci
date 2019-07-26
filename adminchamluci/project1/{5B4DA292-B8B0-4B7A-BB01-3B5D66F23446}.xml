@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration date="2019/07/25" author="e.World Technology Ltd.">
+  <project id="{5B4DA292-B8B0-4B7A-BB01-3B5D66F23446}" file="C:\Users\USER\Desktop\Escritorio\proyecto\project1.pmp" name="project1" product="PHPMaker" version="15.0" datetime="2019/07/25 15:39:51" languagefolder="phplang" userlevel="-2,&quot;Anonymous&quot;,0;">
+    <table id="blog" name="blog" caption="Blog" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="categorias" name="categorias" caption="Categorias" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="clientes" name="clientes" caption="clientes" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="contaco" name="contaco" caption="Informacion De Contacto" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="correos" name="correos" caption="correos" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="cotizaciones" name="cotizaciones" caption="cotizaciones" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="header" name="header" caption="header" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="laempresa" name="laempresa" caption="laempresa" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="productos" name="productos" caption="productos" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="slider" name="slider" caption="slider" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="usuario" name="usuario" caption="usuario" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+  </project>
+</configuration>
