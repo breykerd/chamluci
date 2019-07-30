@@ -1,21 +1,28 @@
+ //verifica carrito y sevisa la resolucion para cargar una imagen adecuada al cargar la pantalla
+
   $(document).ready(function () {
       verificarCarrito();
       resolucion();
 
     });
-
+// revisa los botones para colocarlos en el estado adecuado
   window.onload=botones();
 
-  setTimeout('datosCategorias(1);',700);
- setTimeout('paginarBlog(1);',700); 
-  setTimeout('numeroPagina();',1000); 
+//ejecuta en diferentes intervalos de tiempo las funciones luego de cargar la pagina
+setTimeout('datosCategorias(1);',700);
+setTimeout('paginarBlog(1);',700); 
+setTimeout('numeroPagina();',1000); 
+setTimeout('paginarBusqueda(1);',700);
 
+//revisa si la variable numero actual esta declarada para colocarse en la pagina adecueda
  if (sessionStorage.numeroActual) {
 paginarProductos(sessionStorage.numeroActual); 
 }else{
     console.log('hola')
 }
- setTimeout('paginarBusqueda(1);',700);
+
+//esta funcion controla los aspectos basicos del slider
+
   
 
 
@@ -103,7 +110,7 @@ paginarProductos(sessionStorage.numeroActual);
     });
 
 
-    //funcion que mueve el icono de el carrito en la pantalla
+//funcion que mueve el icono de el carrito en la pantalla
 $(document).ready(function(){
                  $(window).scroll(function () {
                     set = $(document).scrollTop()+"px"; 
@@ -324,6 +331,7 @@ function paginarBusqueda(page){
 };
 
 
+//esta funcion muestra los productos agregados al carrito en el area de cotizacion
 
 function mostrarProductosCarrito(){
 
