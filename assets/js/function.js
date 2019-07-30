@@ -1,5 +1,6 @@
   $(document).ready(function () {
       verificarCarrito();
+      resolucion();
 
     });
 
@@ -7,7 +8,16 @@
 
   setTimeout('datosCategorias(1);',700);
  setTimeout('paginarBlog(1);',700); 
+  setTimeout('numeroPagina();',1000); 
+
+ if (sessionStorage.numeroActual) {
+paginarProductos(sessionStorage.numeroActual); 
+}else{
+    console.log('hola')
+}
  setTimeout('paginarBusqueda(1);',700);
+  
+
 
     var tpj = jQuery;
     var revapi1014;
@@ -104,6 +114,36 @@ $(document).ready(function(){
 
             });
 
+
+//funcion de deteccion de resolucion
+function resolucion(){
+      if (screen.width < 480) {
+        var pantalla = 1;
+    }else{
+        var pantalla = 2;
+    }
+    categoria=$("#categoria").val();
+    $.ajax({
+            url:'backend/backend.php?categoria='+categoria
+            ,success:function(data){
+                datos= JSON.parse(data); 
+                console.log(datos);
+                if (screen.width < 480) {
+                $("#img1").attr("src","assets/images/test.jxr");
+                }
+            },error:function(data){
+        $('#destino').text('error');
+
+
+      }
+      })
+}
+
+//funcion que mantiene el n de pagina para el boton atras
+function numeroPagina(){
+ numeroDePagina=$('#numeroActual').val();
+ sessionStorage.numeroPagina=numeroDePagina;
+}
 
 //optiene el id de la categoria de el url donde se encuentra 
 //al cargar la pagina por primera ves optiene el valor de la pagina 1 para agregarselo a la funcion de paginar productos

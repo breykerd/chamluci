@@ -410,6 +410,18 @@ if(mail($to, $subject, $mensaje, $headers)){
 }
 
 
+if (isset($_GET['categoria'])) {
+    $categoria=$_GET['categoria'];
+   
+    $datosProducto = $mysqli->query("SELECT * FROM categorias WHERE id='$categoria'" );
+                $ProductosParaCarrito=mysqli_fetch_assoc($datosProducto);
+
+                if ($resolucion==1) {
+                    # code...
+                }
+                echo json_encode($ProductosParaCarrito);
+}
+
  ?>
 
 

@@ -3292,6 +3292,20 @@ a,
 	color:#fff;
 }
 
+/* 1.10 Blue-full*/
+.site-button.blue-full { 
+	background-color:#00b4eb;
+	color:#fff;
+	    font-weight: bold;
+}
+.site-button.blue-full:hover,
+.site-button.blue-full:active,
+.site-button.blue-full:focus { 
+	background-color:#2ca2be;
+	color:#284561;
+}
+
+
 /* 1.11 Green */
 .site-button.green { 
 	background-color:#35B494;

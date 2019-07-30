@@ -111,7 +111,12 @@ include 'includes/header.php';
       <div class="container  p-t50 p-b50">
         <div class="row ">
             <div class="col-md-5">
-                                                <!--Fade slider-->
+                                       <a href="javascript:history.back()" class="site-button blue-full button-skew m-l20"><i class="fa fa-chevron-left"></i><span>Atrás</span></a> 
+
+                                       
+
+
+               <!--Fade slider-->
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <ol class="carousel-indicators">
