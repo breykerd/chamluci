@@ -31,6 +31,10 @@ $idCategoria= $DatosProducto['id_cate'];
 $datosCategoria=$Categorias->datosCategoria($idCategoria);
 $productosDestacadosCategoria=$Productos->productosDestacadosCategoria($idCategoria);
 $urlProducto=$DatosProducto['id'].'-'.$DatosProducto['url'];
+
+
+
+
  ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -98,7 +102,6 @@ include 'includes/header.php';
 
 <!-- BODY  -->
 <div class=" section-full ">
-
     <img class="img-header" src="<?php echo $urlImg.$datosCategoria['img_header']; ?>"  alt="">
     <h1 class="texto-header text-white size-h1">
         <?php echo $datosCategoria['titulo']; ?>

@@ -62,6 +62,8 @@ function paginate($reload, $page, $tpages, $adjacents) {
 	}
 	
 	$out.= "</ul>";
+
+	$out.="<input type='hidden' id='pagina' value='".$page."'>";
 	return $out;
 }
 ?>

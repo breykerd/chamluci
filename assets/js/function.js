@@ -11,15 +11,9 @@
 //ejecuta en diferentes intervalos de tiempo las funciones luego de cargar la pagina
 setTimeout('datosCategorias(1);',700);
 setTimeout('paginarBlog(1);',700); 
-setTimeout('numeroPagina();',1000); 
+setTimeout('numeroPagina();',2000); 
 setTimeout('paginarBusqueda(1);',700);
 
-//revisa si la variable numero actual esta declarada para colocarse en la pagina adecueda
- if (sessionStorage.numeroActual) {
-paginarProductos(sessionStorage.numeroActual); 
-}else{
-    console.log('hola')
-}
 
 //esta funcion controla los aspectos basicos del slider
 
@@ -133,8 +127,7 @@ function resolucion(){
     $.ajax({
             url:'backend/backend.php?categoria='+categoria
             ,success:function(data){
-                datos= JSON.parse(data); 
-                console.log(datos);
+                    //console.log(datos);
                 if (screen.width < 480) {
                 $("#img1").attr("src","assets/images/test.jxr");
                 }
@@ -148,8 +141,21 @@ function resolucion(){
 
 //funcion que mantiene el n de pagina para el boton atras
 function numeroPagina(){
- numeroDePagina=$('#numeroActual').val();
+    if ($('#pagina').length) {
+  numeroDePagina=$('#pagina').val();
  sessionStorage.numeroPagina=numeroDePagina;
+
+ var pathname = window.location.pathname;
+var direccionArray = pathname.split("/");
+if (direccionArray[2]=="Categoria") {
+
+
+var url = direccionArray[3].split("-");
+var id = url[0];
+ sessionStorage.Categoria=id;
+
+}
+} 
 }
 
 //optiene el id de la categoria de el url donde se encuentra 
@@ -161,9 +167,33 @@ function datosCategorias(page){
 var pathname = window.location.pathname;
 var direccionArray = pathname.split("/");
 if (direccionArray[2]=="Categoria") {
+
+
 var url = direccionArray[3].split("-");
 var id = url[0];
-paginarProductos(id,page);  
+
+if (sessionStorage.numeroPagina) {
+    if (sessionStorage.numeroPagina==1) {
+        paginarProductos(id,page);
+    }else{
+        if (sessionStorage.Categoria==id) {
+paginarProductos(sessionStorage.Categoria,sessionStorage.numeroPagina);
+        sessionStorage.removeItem(numeroPagina);
+        }else{
+            paginarProductos(id,page);
+
+        }
+        
+
+
+    }
+
+}else{
+    paginarProductos(id,page);
+}
+
+
+
 }
 
 };
@@ -176,8 +206,9 @@ function paginarProductos(id,page){
             ,success:function(data){
                 $("#destino").html(data);
                 $("#loader").html("");
-                    //$("html,body").animate({ scrollTop : $("#destino").offset().left  }, 1500 );
+                    $("html,body").animate({ scrollTop : $("#destino").offset().left  }, 1500 );
                      botones();
+                     numeroPagina();
             },error:function(data){
         $('#destino').text('error');
 
@@ -380,6 +411,8 @@ $('#listaProductos').append(estructura2);
 };
 };
 
+
+//cambia la cantidad de productos que se ban a cotizar para luego enviarlos en el mensaje
 function cambiarValor(id){
     var valor=$('#cantidad-'+id).val();
     $('#idhidden-'+id).val(valor);
@@ -400,7 +433,7 @@ function verificarCarrito(){
 
 };
 
-
+//esta funcion elimina el producto de el carrito de compras en el area de cotizacion
 function eliminarProducto(id){
     var nProductos= sessionStorage.productos.split(",");
     id=id.toString();
@@ -420,17 +453,18 @@ iconoCarro();
 }
 
 
+//oculta una de las alertas
 function ocultaralerta1(){
     var alerta1 = document.getElementById('alerta1');
     alerta1.style.visibility = 'hidden';
 }
-
+//oculta otra de las alertas
 function ocultaralerta2(){
     var alerta2 = document.getElementById('alerta2');
     alerta2.style.visibility = 'hidden';
 }
 
-
+//guarda el correo que es introducido en el area de suscribir
 function suscribirse(){
   var correo= $('#suscribete').val();
 
@@ -461,12 +495,13 @@ setTimeout('ocultaralerta2();',2000);
 
 }
 
+//valida que lo que se introdujo en el area de suscribir es un correo
 function isValidEmail(mail) { 
   return /^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(mail); 
 }
 
 
-//envio de manse de el area de cotizacion
+//envio de mensaje de el area de cotizacion
 function enviarMensajeCotizacion(){
 var nProductos= sessionStorage.productos.split(",");
 var cantidadProductos =nProductos.length;
